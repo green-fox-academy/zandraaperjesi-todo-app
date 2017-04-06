@@ -23,15 +23,20 @@ public class TodoList {
   }
 
   public void list() {
-    int i = 1;
-    for (Task t : todos) {
-      if (t.getState().equals("done")) {
-        System.out.println(i + " - [x] " + t.getDescription());
+    if (todos.size() == 0) {
+      System.out.println("No todos for today! :)");
+      return;
+    }
+    else {
+      int i = 1;
+      for (Task t : todos) {
+        if (t.getState().equals("done")) {
+          System.out.println(i + " - [x] " + t.getDescription());
+        } else {
+          System.out.println(i + " - [ ] " + t.getDescription());
+        }
+        i++;
       }
-      else {
-        System.out.println(i + " - [ ] " + t.getDescription());
-      }
-      i++;
     }
   }
 
