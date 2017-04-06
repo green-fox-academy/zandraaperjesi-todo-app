@@ -42,6 +42,9 @@ public class Main {
     else if (args.length == 2 && args[0].equals("-c")) {
       myTodos.markDone(Integer.valueOf(args[1]));
     }
+    else {
+      System.out.println("Unsupported argument");
+    }
 
     writeData(myTodos.saveToFile());
   }
