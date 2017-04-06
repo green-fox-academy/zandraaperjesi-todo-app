@@ -4,8 +4,12 @@ import java.util.List;
 public class TodoList {
   private List<Task> todos;
 
-  public void add() {
+  public TodoList() {
+    todos = new ArrayList<>();
+  }
 
+  public void add(Task taskTodo) {
+    this.todos.add(taskTodo);
   }
 
   public void delete(int index) {

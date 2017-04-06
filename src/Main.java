@@ -7,11 +7,21 @@ import java.util.List;
 
 public class Main {
   private final static String DATA = "src/data.csv";
+  private final static String REGEX = ";";
+  private static TodoList myTodos;
 
   public static void main(String[] args) {
-    TodoList myTodos = new TodoList();
+    myTodos = new TodoList();
     List<String> rawLines = readData();
-    System.out.println(rawLines.get(1));
+    splitLines(rawLines);
+    myTodos.list();
+  }
+
+  public static void splitLines(List<String> toSplit) {
+    for (String line : toSplit) {
+      String[] buffer = line.split(REGEX);
+      myTodos.add(new Task(buffer[0], buffer[1]));
+    }
   }
 
   private static List<String> readData() {

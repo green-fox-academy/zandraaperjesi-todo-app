@@ -2,9 +2,9 @@ public class Task {
   private String state; //can be done or undone
   private String description; //description of the t0dos
 
-  public Task(String description) {
+  public Task(String state, String description) {
     this.description = description;
-    this.state = "notdone";
+    this.state = state;
   }
 
   public String getDescription() {
