@@ -14,12 +14,19 @@ public class TodoList {
 
   public void delete(int index) {
     List<Task> buffer = new ArrayList<>();
+    int deleted = 0;
     for(int i = 0; i < todos.size(); i++) {
       if (i != index - 1) {
         buffer.add(todos.get(i));
       }
+      else {
+        deleted = 1;
+      }
     }
     todos = buffer;
+    if (deleted == 0) {
+      System.out.println("Unable to remove: index is out of bound");
+    }
   }
 
   public void list() {
@@ -46,10 +53,6 @@ public class TodoList {
       buffer.add(task.saveData());
     }
     return buffer;
-  }
-
-  public void listState() {
-
   }
 
   public void markDone(int toMark) {
