@@ -15,20 +15,32 @@ public class Main {
     List<String> rawLines = readData();
     splitLines(rawLines);
 
-    if (args.length == 1 && args[0].equals("-l")) {
+    if (args.length == 0) {
+      System.out.print("Python Todo application\n =======================\n Command line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task");
+    }
+    else if (args.length == 1 && args[0].equals("-l")) {
       myTodos.list();
     }
     else if (args.length == 2 && args[0].equals("-a")) {
       myTodos.add(new Task("notdone", args[1]));
     }
+    else if (args.length == 1 && args[0].equals("-a")) {
+      System.out.println("Unable to add: no task provided");
+    }
     else if (args.length == 2 && args[0].equals("-r")) {
-      myTodos.delete(Integer.valueOf(args[1]));
+      try {
+        myTodos.delete(Integer.valueOf(args[1]));
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Unable to remove: index is out of bound");
+      } catch (NumberFormatException e) {
+        System.out.println("Unable to remove: index is not a number");
+      }
+    }
+    else if (args.length == 1 && args[0].equals("-r")) {
+      System.out.println("Unable to remove: no index provided");
     }
     else if (args.length == 2 && args[0].equals("-c")) {
       myTodos.markDone(Integer.valueOf(args[1]));
-    }
-    else {
-      System.out.print("Python Todo application\n =======================\n Command line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task");
     }
 
     writeData(myTodos.saveToFile());
