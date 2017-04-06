@@ -3,8 +3,8 @@ public class Task {
   private String description;
 
   public Task(String state, String description) {
-    this.description = description;
     this.state = state;
+    this.description = description;
   }
 
   public String getDescription() {
@@ -16,6 +16,10 @@ public class Task {
   }
 
   public void markDone() {
-    this.description = "done";
+    this.state = "done";
+  }
+
+  public String getState() {
+    return this.state;
   }
 }

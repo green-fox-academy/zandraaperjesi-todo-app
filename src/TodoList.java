@@ -23,8 +23,14 @@ public class TodoList {
   }
 
   public void list() {
+    int i = 0;
     for (Task t : todos) {
-      System.out.println(t.getDescription());
+      if (t.getState().equals("done")) {
+        System.out.println(i + " - [x] " + t.getDescription());
+      }
+      else {
+        System.out.println(i + " - [ ] " + t.getDescription());
+      }
     }
   }
 
