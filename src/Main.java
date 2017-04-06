@@ -43,7 +43,7 @@ public class Main {
       try {
         myTodos.markDone(Integer.valueOf(args[1]));
       } catch (IndexOutOfBoundsException e) {
-        System.out.println("Unable to remove: index is out of bound");
+        System.out.println("Unable to check: index is out of bound");
       } catch (NumberFormatException e) {
         System.out.println("Unable to remove: index is not a number");
       }
