@@ -6,4 +6,8 @@ public class Task {
     this.description = description;
     this.state = "notdone";
   }
+
+  public String getDescription() {
+    return this.description;
+  }
 }

@@ -19,7 +19,9 @@ public class TodoList {
   }
 
   public void list() {
-
+    for (Task t : todos) {
+      System.out.println(t.getDescription());
+    }
   }
 
   public void listState() {
