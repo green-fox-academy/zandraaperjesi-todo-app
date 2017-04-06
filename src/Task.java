@@ -1,6 +1,6 @@
 public class Task {
-  private String state; //can be done or undone
-  private String description; //description of the t0dos
+  private String state;
+  private String description;
 
   public Task(String state, String description) {
     this.description = description;
@@ -9,5 +9,9 @@ public class Task {
 
   public String getDescription() {
     return this.description;
+  }
+
+  public String saveData() {
+    return this.state + ";" + this.description;
   }
 }

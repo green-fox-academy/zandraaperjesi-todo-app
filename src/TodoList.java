@@ -28,6 +28,14 @@ public class TodoList {
     }
   }
 
+  public List<String> saveToFile() {
+    List<String> buffer = new ArrayList<>();
+    for (Task task : todos) {
+      buffer.add(task.saveData());
+    }
+    return buffer;
+  }
+
   public void listState() {
 
   }

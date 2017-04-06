@@ -14,7 +14,24 @@ public class Main {
     myTodos = new TodoList();
     List<String> rawLines = readData();
     splitLines(rawLines);
-    myTodos.list();
+
+    if (args.length == 1 && args[0].equals("-l")) {
+      myTodos.list();
+    }
+    else if (args.length == 2 && args[0].equals("-a")) {
+      myTodos.add(new Task("notdone", args[1]));
+    }
+    else if (args.length == 2 && args[0].equals("-r")) {
+      myTodos.delete(Integer.valueOf(args[1]));
+    }
+    else if () {
+
+    }
+    else {
+      System.out.print("Python Todo application\n =======================\n Command line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task");
+    }
+
+    writeData(myTodos.saveToFile());
   }
 
   public static void splitLines(List<String> toSplit) {
@@ -33,5 +50,14 @@ public class Main {
       e.printStackTrace();
     }
     return readLines;
+  }
+
+  private static void writeData(List<String> data) {
+    Path path = Paths.get(DATA);
+    try {
+      Files.write(path, data);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
