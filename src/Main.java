@@ -40,7 +40,16 @@ public class Main {
       System.out.println("Unable to remove: no index provided");
     }
     else if (args.length == 2 && args[0].equals("-c")) {
-      myTodos.markDone(Integer.valueOf(args[1]));
+      try {
+        myTodos.markDone(Integer.valueOf(args[1]));
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println("Unable to remove: index is out of bound");
+      } catch (NumberFormatException e) {
+        System.out.println("Unable to remove: index is not a number");
+      }
+    }
+    else if (args.length == 1 && args[0].equals("-c")) {
+      System.out.println("Unable to remove: no index provided");
     }
     else {
       System.out.println("Unsupported argument");
