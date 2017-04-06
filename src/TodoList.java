@@ -15,7 +15,7 @@ public class TodoList {
   public void delete(int index) {
     List<Task> buffer = new ArrayList<>();
     for(int i = 0; i < todos.size(); i++) {
-      if (i != index) {
+      if (i != index - 1) {
         buffer.add(todos.get(i));
       }
     }
@@ -40,7 +40,7 @@ public class TodoList {
 
   }
 
-  public void markDone() {
-
+  public void markDone(int toMark) {
+    this.todos.get(toMark - 1).markDone();
   }
 }

@@ -24,8 +24,8 @@ public class Main {
     else if (args.length == 2 && args[0].equals("-r")) {
       myTodos.delete(Integer.valueOf(args[1]));
     }
-    else if () {
-
+    else if (args.length == 2 && args[0].equals("-c")) {
+      myTodos.markDone(Integer.valueOf(args[1]));
     }
     else {
       System.out.print("Python Todo application\n =======================\n Command line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task");

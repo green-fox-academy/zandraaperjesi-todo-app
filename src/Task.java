@@ -14,4 +14,8 @@ public class Task {
   public String saveData() {
     return this.state + ";" + this.description;
   }
+
+  public void markDone() {
+    this.description = "done";
+  }
 }
