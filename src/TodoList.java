@@ -47,15 +47,15 @@ public class TodoList {
     }
   }
 
-  public List<String> saveToFile() {
+  public List<String> toRawForm() {
     List<String> buffer = new ArrayList<>();
     for (Task task : todos) {
-      buffer.add(task.saveData());
+      buffer.add(task.getRawForm());
     }
     return buffer;
   }
 
-  public void markDone(int toMark) {
+  public void doTask(int toMark) {
     this.todos.get(toMark - 1).markDone();
   }
 }

@@ -11,7 +11,7 @@ public class Task {
     return this.description;
   }
 
-  public String saveData() {
+  public String getRawForm() {
     return this.state + ";" + this.description;
   }
 
