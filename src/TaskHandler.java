@@ -9,12 +9,15 @@ public class TaskHandler {
   private final static String REGEX = ";";
   private static TodoList myTodos;
   private static List<String> rawLines;
+  private long millisToDue;
+  final static long MILLIS_IN_DAY = 86400000;
 
   public TaskHandler() {
     this.myTodos = new TodoList();
+    millisToDue = this.countMillis();
   }
 
-  public static void checkInput(String[] arguments) {
+  public void checkInput(String[] arguments) {
     if (arguments.length == 0) {
       System.out.print("Java Todo application\n =======================\n Command line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task");
     }
@@ -22,7 +25,7 @@ public class TaskHandler {
       myTodos.list();
     }
     else if (arguments.length == 3 && arguments[0].equals("-a")) {
-      myTodos.add(new Task("notdone", arguments[1], Integer.valueOf(arguments[2]) * 86400000 + System.currentTimeMillis()));
+      myTodos.add(new Task("notdone", arguments[1], Integer.valueOf(arguments[2]) * millisToDue));
     }
     else if (arguments.length == 1 && arguments[0].equals("-a")) {
       System.out.println("Unable to add: no task provided");
@@ -79,5 +82,9 @@ public class TaskHandler {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public long countMillis() {
+    return System.currentTimeMillis() + MILLIS_IN_DAY;
   }
 }
