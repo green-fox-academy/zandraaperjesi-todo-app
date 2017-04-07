@@ -38,9 +38,9 @@ public class TodoList {
       int i = 1;
       for (Task t : todos) {
         if (t.getState().equals("done")) {
-          System.out.println(i + " - [x] " + t.getDescription());
+          System.out.println(i + " - [x] " + t.getDescription() + " - is due in " + t.getDue() + " days.");
         } else {
-          System.out.println(i + " - [ ] " + t.getDescription());
+          System.out.println(i + " - [ ] " + t.getDescription() + " - is due in " + t.getDue() + " days.");
         }
         i++;
       }

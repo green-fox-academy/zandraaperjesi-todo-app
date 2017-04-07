@@ -21,8 +21,8 @@ public class TaskHandler {
     else if (arguments.length == 1 && arguments[0].equals("-l")) {
       myTodos.list();
     }
-    else if (arguments.length == 2 && arguments[0].equals("-a")) {
-      myTodos.add(new Task("notdone", arguments[1]));
+    else if (arguments.length == 3 && arguments[0].equals("-a")) {
+      myTodos.add(new Task("notdone", arguments[1], Integer.valueOf(arguments[2]) * 86400000 + System.currentTimeMillis()));
     }
     else if (arguments.length == 1 && arguments[0].equals("-a")) {
       System.out.println("Unable to add: no task provided");
@@ -59,7 +59,7 @@ public class TaskHandler {
   public static void splitLines() {
     for (String line : rawLines) {
       String[] buffer = line.split(REGEX);
-      myTodos.add(new Task(buffer[0], buffer[1]));
+      myTodos.add(new Task(buffer[0], buffer[1], Long.valueOf(buffer[2])));
     }
   }
 
