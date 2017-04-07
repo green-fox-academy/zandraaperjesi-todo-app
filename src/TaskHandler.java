@@ -4,20 +4,20 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class TaskHandler {
+class TaskHandler {
   private final static String DATA = "src/data.csv";
   private final static String REGEX = ";";
-  private static TodoList myTodos;
-  private static List<String> rawLines;
+  private  TodoList myTodos;
+  private  List<String> rawLines;
   private long millisToDue;
-  final static long MILLIS_IN_DAY = 86400000;
+  private final static long MILLIS_IN_DAY = 86400000;
 
-  public TaskHandler() {
+  TaskHandler() {
     this.myTodos = new TodoList();
     millisToDue = this.countMillis();
   }
 
-  public void checkInput(String[] arguments) {
+  void checkInput(String[] arguments) {
     if (arguments.length == 0) {
       System.out.print("Java Todo application\n =======================\n Command line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task");
     }
@@ -59,14 +59,14 @@ public class TaskHandler {
     }
   }
 
-  public static void splitLines() {
+  void splitLines() {
     for (String line : rawLines) {
       String[] buffer = line.split(REGEX);
       myTodos.add(new Task(buffer[0], buffer[1], Long.valueOf(buffer[2])));
     }
   }
 
-  public static void readData() {
+  void readData() {
     Path path = Paths.get(DATA);
     try {
       rawLines = Files.readAllLines(path);
@@ -75,7 +75,7 @@ public class TaskHandler {
     }
   }
 
-  public static void writeData() {
+  void writeData() {
     Path path = Paths.get(DATA);
     try {
       Files.write(path, myTodos.toRawForm());
@@ -84,7 +84,7 @@ public class TaskHandler {
     }
   }
 
-  public long countMillis() {
+  private long countMillis() {
     return System.currentTimeMillis() + MILLIS_IN_DAY;
   }
 }

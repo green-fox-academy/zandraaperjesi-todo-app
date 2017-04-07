@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoList {
+class TodoList {
   private List<Task> todos;
 
-  public TodoList() {
+  TodoList() {
     todos = new ArrayList<>();
   }
 
-  public void add(Task taskTodo) {
+  void add(Task taskTodo) {
     this.todos.add(taskTodo);
   }
 
-  public void delete(int index) {
+  void delete(int index) {
     List<Task> buffer = new ArrayList<>();
     int deleted = 0;
     for(int i = 0; i < todos.size(); i++) {
@@ -29,7 +29,7 @@ public class TodoList {
     }
   }
 
-  public void list() {
+  void list() {
     if (todos.size() == 0) {
       System.out.println("No todos for today! :)");
       return;
@@ -47,7 +47,7 @@ public class TodoList {
     }
   }
 
-  public List<String> toRawForm() {
+  List<String> toRawForm() {
     List<String> buffer = new ArrayList<>();
     for (Task task : todos) {
       buffer.add(task.getRawForm());
@@ -55,7 +55,7 @@ public class TodoList {
     return buffer;
   }
 
-  public void doTask(int toMark) {
+  void doTask(int toMark) {
     this.todos.get(toMark - 1).markDone();
   }
 }
